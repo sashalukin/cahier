@@ -294,7 +294,8 @@ private fun CahierNavigationSuite(
                                                 .current,
                                             interactionSource,
                                         )
-                                        .zIndex(2f), // Specify z-index to ensure the drag handle is drawn on top of the panes
+                                        .zIndex(2f) // Specify z-index to ensure the drag handle is drawn on top of the panes
+                                        .testTag("home_pane_drag_handle"),
                             )
                         },
                         listPane = {

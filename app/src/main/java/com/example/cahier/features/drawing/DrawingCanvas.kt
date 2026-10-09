@@ -71,6 +71,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.platform.testTag
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.ink.rendering.android.canvas.CanvasStrokeRenderer
 import androidx.ink.strokes.Stroke
@@ -324,6 +325,7 @@ private fun DrawingSurfaceWithTarget(
     Box(
         modifier = modifier
             .fillMaxSize()
+            .testTag("drawing_canvas")
             .onSizeChanged { canvasSize = it }
             .dragAndDropTarget(
                 shouldStartDragAndDrop = { event ->

@@ -77,6 +77,18 @@ roborazzi {
     outputDir.set(file("../screenshots"))
 }
 
+// Ink's Android artifacts load the native "ink" library through System.loadLibrary, which has no
+// host build and makes the app unlaunchable in JVM (Robolectric) tests. The JVM variant of the
+// native loader bundles host binaries (linux-x86_64, macos-arm64) and extracts them at runtime, so
+// swap it in for unit tests only.
+configurations.matching { it.name.endsWith("UnitTestRuntimeClasspath") }.configureEach {
+    resolutionStrategy.dependencySubstitution {
+        val jvmLoader = module("androidx.ink:ink-nativeloader-jvm:${libs.versions.ink.get()}")
+        substitute(module("androidx.ink:ink-nativeloader")).using(jvmLoader)
+        substitute(module("androidx.ink:ink-nativeloader-android")).using(jvmLoader)
+    }
+}
+
 dependencies {
 
     implementation(libs.androidx.core.ktx)

@@ -50,6 +50,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
+import androidx.compose.ui.platform.testTag
 import com.example.cahier.R
 import com.example.cahier.developer.brushgraph.data.Port
 import com.example.cahier.developer.brushgraph.data.PortSide
@@ -141,6 +142,7 @@ fun PortDot(
                     modifier = Modifier
                       .align(Alignment.Center)
                       .size(12.dp)
+                      .testTag("bg_port_dot_input")
                       .background(
                         if (isDragging) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outlineVariant,
                         CircleShape
@@ -201,6 +203,7 @@ fun PortDot(
                 modifier = Modifier
                   .align(Alignment.Center)
                   .size(12.dp)
+                  .testTag("bg_port_dot_output")
                   .background(
                     if (isDragging) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outlineVariant,
                     CircleShape
